@@ -18,12 +18,12 @@ db.once("open", function(callback) {
 });
 
 app.get('/posts', (req, res) => {
-  res.send(
-    {
-      title: "Hello world",
-      description: "Hello planets, like Neptune!!!!!"
-    }
-  );
+  Post.find({}, function (err, postsArr) {
+    if (err) { console.error("Error in GET posts!"); }
+    res.send({
+      posts: postsArr
+    })
+  }).sort({_id: 'asc'}); 
 });
 
 app.post('/posts', (req, res) => {
