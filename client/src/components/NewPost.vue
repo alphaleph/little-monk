@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import PostsService from '@/services/PostsService';
+import PostsService from '@/services/PostsService'
 
 export default {
   name: 'NewPost',
@@ -31,8 +31,8 @@ export default {
       await PostsService.addPost({
         title: this.title,
         description: this.description
-      });
-      this.$router.push({ name: 'Posts' });
+      })
+      this.$router.push({ name: 'Posts' }) /* TODO: Purpose? */
     }
   }
 }
