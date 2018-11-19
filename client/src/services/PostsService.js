@@ -12,5 +12,8 @@ export default {
   },
   updatePost (params) {
     return Api().put('posts/' + params.id, params)
+  },
+  deletePost (id) {
+    return Api().delete('posts/' + id)
   }
 }

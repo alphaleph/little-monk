@@ -31,6 +31,11 @@ app.get('/posts', (req, res) => {
   Post.find({}, function (err, postsArr) {
     if (err) { 
       console.error(err);
+      res.status(500).send({
+        success: false,
+        message: "Error: Problem occurred while retrieving posts."
+      })
+      return
     }
     res.send({
       posts: postsArr
@@ -44,6 +49,11 @@ app.get('/post/:id', (req, res) => {
   Post.findById(req.params.id, 'title description', function (err, post){
     if (err) {
       console.error(err);
+      res.status(500).send({
+        success: false,
+        message: "Error: Problem occurred while searching for post."
+      })
+      return
     }
     res.send(post);
   });
@@ -58,9 +68,14 @@ app.post('/posts', (req, res) => {
     title: title,
     description: description
   });
-  newPost.save(function (err) {
+  newPost.save( function (err) {
     if (err) {
       console.error(err);
+      res.status(500).send({
+        success: false,
+        message: "Error: Post was not created!"
+      })
+      return
     }
     res.send({
       status: true,
@@ -78,14 +93,40 @@ app.put('/posts/:id', (req, res) => {
     }
     post.title = req.body.title;
     post.description = req.body.description;
-    post.save(function(err){
+    post.save( function (err) {
       if (err) {
         console.error(err);
+        res.status(500).send({
+          success: false,
+          message: "Error: Post was not saved!"
+        })
+        return
       }
       res.send({
-        success: true
+        success: true,
+        message: "Post updated!"
       });
     });
+  });
+});
+
+app.delete('/posts/:id', (req, res) => {
+  /* const db = req.db */
+  Post.remove({
+    _id: req.params.id
+    }, function (err) {
+      if (err) {
+        console.error(err);
+        res.status(500).send({
+          success: false,
+          message: "Error: Post was not deleted!"
+        })
+        return
+      }
+      res.send({
+        success: true,
+        message: "Post deleted!"
+      });
   });
 });
 
