@@ -32,7 +32,7 @@ export default {
         title: this.title,
         description: this.description
       })
-      this.$router.push({ name: 'Posts' }) /* TODO: Purpose? */
+      this.$router.push({ name: 'Posts' })
     }
   }
 }

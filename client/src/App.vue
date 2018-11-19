@@ -6,6 +6,12 @@
 </template>
 
 <script>
+/*
+TODO:
+- Implement more robust error handling and input checking (e.g. escaping for XSS; input validation - type, length, format, range; URL/HTML use sanitaize-html)
+- Improve UI via SemanticUI and SweetAlert, Vuetify (doesn't use v-html for XSS safety)
+*/
+
 export default {
   name: 'App'
 }
