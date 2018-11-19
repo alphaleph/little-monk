@@ -6,5 +6,11 @@ export default {
   },
   addPost (params) {
     return Api().post('posts', params)
+  },
+  getPost (params) {
+    return Api().get('post/' + params.id)
+  },
+  updatePost (params) {
+    return Api().put('posts/' + params.id, params)
   }
 }
