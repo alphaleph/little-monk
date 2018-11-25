@@ -13,9 +13,19 @@ app.use(cors());
 mongoose.connect('mongodb://localhost:27017/posts');
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error"));
-db.once("open", function(callback) {
-  console.log("Connection succeeded");
+db.once("open", () => {
+  console.log("Mongoose connection succeeded");
 });
+db.once("disconnected", () => {
+  console.log("Mongoose connection disconnected")
+})
+
+process.on('SIGINT', () => {
+  db.close( () => {
+    console.log("Mongoose connection disconnected through app termination")
+    process.exit(0);
+  })
+} )
 
 const SERVER_PORT = 8081;
 
