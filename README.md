@@ -1,1 +1,1 @@
-# little-buddha - A MEVN stack-based app for crowd-sourced wisdom  
+# little-monk - A MEVN stack-based app for crowd-sourced wisdom  
