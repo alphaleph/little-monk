@@ -12,58 +12,63 @@ app.use(cors());
 
 mongoose.connect('mongodb://localhost:27017/posts');
 const db = mongoose.connection;
-db.on("error", console.error.bind(console, "connection error"));
-db.once("open", () => {
-  console.log("Mongoose connection succeeded");
+db.on('error', console.error.bind(console, 'connection error'));
+db.once('open', () => {
+  console.log('Mongoose connection succeeded');
 });
-db.once("disconnected", () => {
-  console.log("Mongoose connection disconnected")
-})
+db.once('disconnected', () => {
+  console.log('Mongoose connection disconnected');
+});
 
 process.on('SIGINT', () => {
-  db.close( () => {
-    console.log("Mongoose connection disconnected through app termination")
+  db.close(() => {
+    console.log('Mongoose connection disconnected through app termination');
     process.exit(0);
-  })
-} )
+  });
+});
 
 const SERVER_PORT = 8081;
 
-/* 
+/*
 TODO:
-- Implement more robust error handling and input checking (e.g. escaping for XSS; input validation - type, length, format, range; URL/HTML encoding, use sanitaize-html)
+- Implement more robust error handling and input checking
+  (e.g.
+    escaping for XSS
+    input validation - type, len, format, range
+    URL/HTML encoding, use sanitaize-html)
 - Server-side rendering
 - Containerize microservices via Docker
+- Uglify JS
 */
 
 /* Fetch all posts */
 app.get('/posts', (req, res) => {
-  Post.find({}, function (err, postsArr) {
-    if (err) { 
+  Post.find({}, (err, postsArr) => {
+    if (err) {
       console.error(err);
       res.status(500).send({
         success: false,
-        message: "Error: Problem occurred while retrieving posts."
-      })
-      return
+        message: 'Error: Problem occurred while retrieving posts.',
+      });
+      throw err;
     }
     res.send({
-      posts: postsArr
-    })
-  }).sort({_id: 'asc'}); 
+      posts: postsArr,
+    });
+  }).sort({ _id: 'asc' });
 });
 
 /* Fetch single post */
 app.get('/post/:id', (req, res) => {
   /* const db = req.db; */
-  Post.findById(req.params.id, 'title description', function (err, post){
+  Post.findById(req.params.id, 'title description', (err, post) => {
     if (err) {
       console.error(err);
       res.status(500).send({
         success: false,
-        message: "Error: Problem occurred while searching for post."
-      })
-      return
+        message: 'Error: Problem occurred while searching for post.',
+      });
+      throw err;
     }
     res.send(post);
   });
@@ -72,24 +77,28 @@ app.get('/post/:id', (req, res) => {
 /* Add new post */
 app.post('/posts', (req, res) => {
   /* const db = req.db;  */
-  const title = req.body.title;
-  const description = req.body.description;
+  const {
+    body: {
+      title,
+      description,
+    },
+  } = req;
   const newPost = Post({
-    title: title,
-    description: description
+    title,
+    description,
   });
-  newPost.save( function (err) {
+  newPost.save((err) => {
     if (err) {
       console.error(err);
       res.status(500).send({
         success: false,
-        message: "Error: Post was not created!"
-      })
-      return
+        message: 'Error: Post was not created!',
+      });
+      throw err;
     }
     res.send({
       status: true,
-      message: "Post saved successfully!"
+      message: 'Post saved successfully!',
     });
   });
 });
@@ -97,46 +106,44 @@ app.post('/posts', (req, res) => {
 /* Update single post */
 app.put('/posts/:id', (req, res) => {
   /* const db = req.db; */
-  Post.findById(req.params.id, 'title description', function (err, post) {
-    if (err) {
-      console.error(err);
-    }
-    post.title = req.body.title;
-    post.description = req.body.description;
-    post.save( function (err) {
-      if (err) {
-        console.error(err);
+  Post.findByIdAndUpdate(req.params.id,
+    {
+      title: req.body.title,
+      description: req.body.description,
+    },
+    (error) => {
+      if (error) {
+        console.error(error);
         res.status(500).send({
           success: false,
-          message: "Error: Post was not saved!"
-        })
-        return
+          message: 'Error: Post was not found and not saved!',
+        });
+        throw error;
       }
       res.send({
         success: true,
-        message: "Post updated!"
+        message: 'Post updated!',
       });
     });
-  });
 });
 
 app.delete('/posts/:id', (req, res) => {
   /* const db = req.db */
   Post.remove({
-    _id: req.params.id
-    }, function (err) {
-      if (err) {
-        console.error(err);
-        res.status(500).send({
-          success: false,
-          message: "Error: Post was not deleted!"
-        })
-        return
-      }
-      res.send({
-        success: true,
-        message: "Post deleted!"
+    _id: req.params.id,
+  }, (err) => {
+    if (err) {
+      console.error(err);
+      res.status(500).send({
+        success: false,
+        message: 'Error: Post was not deleted!',
       });
+      throw err;
+    }
+    res.send({
+      success: true,
+      message: 'Post deleted!',
+    });
   });
 });
 
