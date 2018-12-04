@@ -35,7 +35,7 @@ TODO:
   (e.g.
     escaping for XSS
     input validation - type, len, format, range
-    URL/HTML encoding, use sanitaize-html)
+    URL/HTML encoding, use sanitize-html)
 - Server-side rendering
 - Containerize microservices via Docker
 - Uglify JS

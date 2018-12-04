@@ -88,7 +88,7 @@ export default {
   name: 'Welcome',
   data () {
     return {
-      msg: 'Welcome to the Posts App'
+      msg: 'Welcome to the Little Buddha App'
     }
   }
 }

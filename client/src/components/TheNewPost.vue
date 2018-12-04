@@ -3,13 +3,29 @@
     <h1>Add Post</h1>
     <div class="form">
       <div>
-        <input type="text" name="title" placeholder="TITLE" v-model="title">
+        <input
+          type="text"
+          name="title"
+          placeholder="TITLE"
+          v-model="title"
+        >
       </div>
       <div>
-        <textarea cols="30" rows="10" placeholder="DESCRIPTION" v-model="description"></textarea>
+        <textarea
+          cols="30"
+          rows="10"
+          placeholder="DESCRIPTION"
+          v-model="description"
+        >
+        </textarea>
       </div>
       <div>
-        <button class="app_post_btn" @click="addPost">Add</button>
+        <button
+          class="app_post_btn"
+          @click="addPost"
+        >
+          Add
+        </button>
       </div>
     </div>
   </div>
@@ -38,7 +54,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .form input, .form textarea {
   width: 500px;
   padding: 10px;

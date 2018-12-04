@@ -1,9 +1,17 @@
 <template>
   <div class="posts-list">
     <h1>Posts</h1>
-    <div v-if="posts.length > 0" class=table-wrap>
+    <div
+      v-if="posts.length > 0"
+      class=table-wrap
+    >
       <div>
-        <router-link v-bind:to="{ name: 'NewPost' }" class="">Add Post</router-link>
+        <router-link
+          :to="{ name: 'NewPost' }"
+          class=""
+        >
+          Add Post
+        </router-link>
       </div>
       <table>
         <tr>
@@ -11,19 +19,38 @@
           <td width="550">Description</td>
           <td width="100" align="center">Action</td>
         </tr>
-        <tr v-for="(post) in posts" :key="post._id">
+        <tr 
+          v-for="(post) in posts"
+          :key="post._id"
+        >
           <td>{{ post.title }}</td>
           <td>{{ post.description }}</td>
           <td align="center">
-            <router-link v-bind:to="{ name: 'EditPost', params: { id: post._id } }">Edit</router-link>
-            <a href="#" @click="deletePost(post._id)">Delete</a>
+            <router-link
+              :to="{ name: 'EditPost', params: { id: post._id } }"
+            >
+              Edit
+            </router-link>
+            <a 
+              href="#"
+              @click="deletePost(post._id)"
+            >
+              Delete
+            </a>
           </td>
         </tr>
       </table>
     </div>
     <div v-else>
-      There are no posts yet. <br/><br/>
-      <router-link v-bind:to="{ name: 'NewPost' }" class="add_post_link">Add Post</router-link>
+      There are no posts yet.
+      <br/>
+      <br/>
+      <router-link
+        :to="{ name: 'NewPost' }"
+        class="add_post_link"
+      >
+        Add Post
+      </router-link>
     </div>
   </div>
 </template>
@@ -32,7 +59,7 @@
 import PostsService from '@/services/PostsService'
 
 export default {
-  name: 'posts',
+  name: 'PostsList',
   data () {
     return {
       posts: []
@@ -55,7 +82,7 @@ export default {
 }
 </script>
 
-<style type="text/css">
+<style scoped type="text/css">
   .table-wrap {
     width: 60%;
     margin: 0 auto;

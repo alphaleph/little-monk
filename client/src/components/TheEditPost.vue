@@ -3,13 +3,29 @@
     <h1>Edit Post</h1>
     <div class="form">
       <div>
-        <input type="text" name="title" placeholder="TITLE" v-model="title">
+        <input 
+          type="text"
+          name="title"
+          placeholder="TITLE"
+          v-model="title"
+        >
       </div>
       <div>
-        <textarea rows="15" cols="15" placeholder="DESCRIPTION" v-model="description"></textarea>
+        <textarea 
+          rows="15"
+          cols="15"
+          placeholder="DESCRIPTION"
+          v-model="description"
+        >
+        </textarea>
       </div>
       <div>
-        <button class="app_post_btn" @click="updatePost">Update</button>
+        <button 
+          class="app_post_btn"
+          @click="updatePost"
+        >
+          Update
+        </button>
       </div>
     </div>
   </div>
@@ -49,7 +65,7 @@ export default {
 }
 </script>
 
-<style type="text/css">
+<style type="text/css" scoped>
   .form input, .form textarea {
     width: 500px;
     padding: 10px;
