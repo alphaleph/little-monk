@@ -39,16 +39,34 @@ export default {
   data () {
     return {
       title: '',
-      description: ''
+      description: '',
+      isSubmitted: false
+    }
+  },
+  beforeRouteLeave (to, from, next) {
+    if (this.isSubmitted || (this.title.trim().length === 0 && this.description.trim().length === 0)) {
+      next()
+    } else {
+      const answer = window.confirm('Do you really want to leave? You have unsaved changes.')
+      if (!answer) {
+        next(false)
+      } else {
+        next()
+      }
     }
   },
   methods: {
     async addPost () {
-      await PostsService.addPost({
-        title: this.title,
-        description: this.description
-      })
-      this.$router.push({ name: 'Posts' })
+      if (this.title.trim().length > 0 && this.description.trim().length > 0) {
+        await PostsService.addPost({
+          title: this.title.trim(),
+          description: this.description.trim()
+        })
+        this.isSubmitted = true
+        this.$router.push({ name: 'PostsList' })
+      } else {
+        window.alert('Post title and content fields cannot be empty.')
+      }
     }
   }
 }

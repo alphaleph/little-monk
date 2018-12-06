@@ -39,11 +39,30 @@ export default {
   data () {
     return {
       title: '',
-      description: ''
+      description: '',
+      originalTitle: '',
+      originalDescription: '',
+      isSubmitted: false
     }
   },
   mounted () {
     this.getPost()
+  },
+  beforeRouteUpdate (to, from, next) {
+    this.getPost()
+    next()
+  },
+  beforeRouteLeave (to, from, next) {
+    if (this.isSubmitted || (this.title === this.originalTitle && this.description === this.originalDescription)) {
+      next()
+    } else {
+      const answer = window.confirm('Do you really want to leave? You have unsaved changes.')
+      if (!answer) {
+        next(false)
+      } else {
+        next()
+      }
+    }
   },
   methods: {
     async getPost () {
@@ -51,15 +70,22 @@ export default {
         id: this.$route.params.id
       })
       this.title = response.data.title
+      this.originalTitle = this.title
       this.description = response.data.description
+      this.originalDescription = this.description
     },
     async updatePost () {
+      if (this.title.trim().length > 0 && this.description.trim().length > 0) {
       await PostsService.updatePost({
         id: this.$route.params.id,
-        title: this.title,
-        description: this.description
+          title: this.title.trim(),
+          description: this.description.trim()
       })
-      this.$router.push({name: 'Posts'})
+        this.isSubmitted = true
+        this.$router.push({name: 'PostsList'})
+      } else {
+        window.alert('Post title and content fields cannot be empty.')
+      }
     }
   }
 }

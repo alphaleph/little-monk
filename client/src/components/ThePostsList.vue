@@ -74,9 +74,12 @@ export default {
       this.posts = response.data.posts
     },
     async deletePost (id) {
+      const answer = window.confirm('Are you sure you want to delete this post?')
+      if (answer) {
       await PostsService.deletePost(id)
       this.getPosts()
-      this.$router.push({ name: 'Posts' })
+        window.alert('Your post will be deleted.')
+      }
     }
   }
 }
