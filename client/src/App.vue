@@ -1,30 +1,40 @@
 <template>
   <div id="app">
-    <img src="./assets/cabbage-header.jpg">
+    <toolbar/>
     <router-view/>
+    <div class=footer></div>
   </div>
 </template>
 
 <script>
-/*
-TODO:
-- Implement connect-history-api-fallback and 404/catchall handling
-- Implement more robust error handling and input checking (e.g. escaping for XSS; input validation - type, length, format, range; URL/HTML)
-- For user passwords: clean up client before sending, hash key with once-off nonce, send via HTTPS, irreversibly hash with another unique salt before storing
-- Improve UI via SemanticUI and SweetAlert, Vuetify (doesn't use v-html for XSS safety)
-*/
+import ToolBar from '@/components/TheToolBar.vue'
 
 export default {
-  name: 'App'
+  name: 'App',
+  components: {
+    'toolbar': ToolBar
+  }
 }
 </script>
 
-<style>
+<style lang="scss">
+@import "~vue-material/dist/theme/engine";
+@include md-register-theme("default", (
+  primary: #62757f,
+  accent: #c30000
+));
+@import "~vue-material/dist/theme/all";
+
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+  background: url("../src/assets/papery-background.png") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+.footer {
+  background-color: #90a4ae;
+  width: 100%;
+  height: 1em;
 }
 </style>
