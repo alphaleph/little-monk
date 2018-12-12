@@ -52,7 +52,7 @@ module.exports = {
         include: [resolve('src'), resolve('test'), resolve('node_modules/webpack-dev-server/client')]
       },
       {
-        test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+        test: /\.(png|jpe?g|gif)(\?.*)?$/,
         loader: 'url-loader',
         options: {
           limit: 10000,
@@ -81,6 +81,12 @@ module.exports = {
           'vue-style-loader',
           'css-loader',
           'sass-loader'
+        ]
+      },
+      {
+        test: /\.svg$/,
+        use: [
+          'vue-svg-loader'
         ]
       }
     ]
