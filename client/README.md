@@ -1,6 +1,8 @@
 # client
 
 > A Vue.js project
+> Icon adapted from Matsumura Goshun's Rensho Bo
+> Background image adapted from Randen Pederson's Old Paper Texture
 
 ## Build Setup
 
