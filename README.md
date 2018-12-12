@@ -28,37 +28,35 @@ npm start
 ```
 # TODO:
 ## Client:
-[ ] Implement connect-history-api-fallback and 404/catchall handling
-[ ] Security: clean up client before sending private info, hash key with once-off nonce, send via HTTPS, irreversibly hash with another unique salt before storing
+- [ ] Implement connect-history-api-fallback and 404/catchall handling
+- [ ] Security: clean up client before sending private info, hash key with once-off nonce, send via HTTPS, irreversibly hash with another unique salt before storing
 
 ## Server:
-[ ] Server-side rendering
-[ ] Containerize microservices via Docker
-[ ] Optimize DB operations (via indexing, etc)
-[ ] Uglify JS
+- [ ] Server-side rendering
+- [ ] Containerize microservices via Docker
+- [ ] Optimize DB operations (via indexing, etc)
+- [ ] Uglify JS
 
 ## Overall:
-[ ] Implement more robust error handling and input checking (e.g. escaping for XSS,, input validation, URL encode input and output)
-[ ] Implement cucumber and selenium tests
-[ ] Modularize code as usage patterns arise
+- [ ] Implement more robust error handling and input checking (e.g. escaping for XSS,, input validation, URL encode input and output)
+- [ ] Implement cucumber and selenium tests
+- [ ] Modularize code as usage patterns arise
 
 ## Functionality:
-[x] Fundamental MERN stack set-up
-[x] Fundamental UI design
-[x] CRUD functionality for entries
-[x] Create more robust UI wireframes
-[x] Create logo icon
-[ ] Update UI
-[ ] Feature: Account management
-[ ] Feature: Discussion view
-[ ] Feature: Emoji reactions
-[ ] Feature: Notifications
-[ ] Feature: Sharing
+- [x] Fundamental MERN stack set-up
+- [x] Fundamental UI design
+- [x] CRUD functionality for entries
+- [x] Create more robust UI wireframes
+- [x] Create logo icon
+- [ ] Update UI
+- [ ] Feature: Account management
+- [ ] Feature: Discussion view
+- [ ] Feature: Emoji reactions
+- [ ] Feature: Notifications
+- [ ] Feature: Sharing
 
 # Planned Features:
-[ ] Search for posts and users
-[ ] User-formed connections between posts (as voted tags?)
-[ ] Multimedia posts?
-[ ] Suggested posts? 
-
-
+- [ ] Search for posts and users
+- [ ] User-formed connections between posts (as voted tags?)
+- [ ] Multimedia posts?
+- [ ] Suggested posts?
