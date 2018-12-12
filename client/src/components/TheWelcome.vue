@@ -1,113 +1,83 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>
-    <ul>
-      <li>
-        <a
-          href="https://vuejs.org"
-          target="_blank"
+  <div class="container-main">
+    <md-progress-bar class="md-primary" :md-value="100"></md-progress-bar>
+    <div class="container-welcome-text">
+      <p class="md-headline welcome-text">
+        Welcome to Little Monk, a place for nameless wisdom sharing<br>
+        and discussion for fellow wayfarers of life.
+        <br>
+        <br>
+        Please log in or browse our collection!
+      </p>
+    </div>
+    <div class="container-icon-and-buttons md-layout md-alignment-top-left">
+      <div class="container-icon md-layout-item">
+        <img
+          class="icon-little-monk"
+          src="../assets/little-monk-icon.png"
+          alt="Little Monk Icon"
         >
-          Core Docs
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://forum.vuejs.org"
-          target="_blank"
-        >
-          Forum
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://chat.vuejs.org"
-          target="_blank"
-        >
-          Community Chat
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://twitter.com/vuejs"
-          target="_blank"
-        >
-          Twitter
-        </a>
-      </li>
-      <br>
-      <li>
-        <a
-          href="http://vuejs-templates.github.io/webpack/"
-          target="_blank"
-        >
-          Docs for This Template
-        </a>
-      </li>
-    </ul>
-    <h2>Ecosystem</h2>
-    <ul>
-      <li>
-        <a
-          href="http://router.vuejs.org/"
-          target="_blank"
-        >
-          vue-router
-        </a>
-      </li>
-      <li>
-        <a
-          href="http://vuex.vuejs.org/"
-          target="_blank"
-        >
-          vuex
-        </a>
-      </li>
-      <li>
-        <a
-          href="http://vue-loader.vuejs.org/"
-          target="_blank"
-        >
-          vue-loader
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://github.com/vuejs/awesome-vue"
-          target="_blank"
-        >
-          awesome-vue
-        </a>
-      </li>
-    </ul>
+      </div>
+      <div class="container-button md-layout-item">
+          <md-button
+            class="button-sample md-raised md-accent"
+            href="https://vuematerial.io/components/button"
+          >
+            View Sample Story
+          </md-button>
+          <md-button
+            class="button-sample md-raised md-accent"
+            href="https://vuematerial.io/components/button"
+          >
+            View Sample Quote
+          </md-button>
+      </div>
+    </div>
+    <div class=footer>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Welcome',
-  data () {
-    return {
-      msg: 'Welcome to the Little Buddha App'
-    }
-  }
+  name: 'Welcome'
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h1, h2 {
-  font-weight: normal;
+<style lang="scss">
+.icon-little-monk {
+  width:60%;
+  height:auto;
+  float: right;
 }
-ul {
-  list-style-type: none;
-  padding: 0;
+.container-icon {
+  padding: 0% 5% 5% 6%;
 }
-li {
-  display: inline-block;
-  margin: 0 10px;
+.container-welcome-text {
+  padding: 3% 2% 0% 30%;
 }
-a {
-  color: #42b983;
+.welcome-text {
+  text-align: left;
+  padding: 3% 10% 3% 3%;
+  margin-right: 20%;
+  border-radius: 5px;
+  background-color: #90a4ae;
+  box-shadow: 0px 4px 8px 0px #b3b3b3;
+}
+.container-button {
+  padding-top: 1%;
+  padding-right: 7%;
+}
+.button-sample {
+  display: block;
+  margin: 5% 0% 10% 0%;
+  width: 65%;
+  font-size: 1.5em;
+}
+.footer {
+  background-color: #90a4ae;
+  width: 100%;
+  height: 1em;
 }
 </style>
