@@ -9,6 +9,12 @@ import 'vue-material/dist/vue-material.min.css'
 Vue.config.productionTip = false
 Vue.use(VueMaterial)
 
+/* Update SPA Page Titles */
+router.beforeEach((to, from, next) => {
+  document.title = to.meta.title
+  next()
+})
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

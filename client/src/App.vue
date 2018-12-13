@@ -1,7 +1,11 @@
 <template>
   <div id="app">
-    <toolbar/>
+    <toolbar @to-do="toggleSnackBar"/>
     <router-view/>
+    <md-snackbar :md-position="'left'" :md-duration="4000" :md-active.sync="showSnackBar">
+      <span>Feature coming soon! Apologies for the inconvenience.</span>
+      <md-button class="md-accent md-raised md-dense"  @click="toggleSnackBar">Close</md-button>
+    </md-snackbar>
     <div class=footer></div>
   </div>
 </template>
@@ -13,6 +17,16 @@ export default {
   name: 'App',
   components: {
     'toolbar': ToolBar
+  },
+  data () {
+    return {
+      showSnackBar: false
+    }
+  },
+  methods: {
+    toggleSnackBar () {
+      this.showSnackBar = !this.showSnackBar
+    }
   }
 }
 </script>

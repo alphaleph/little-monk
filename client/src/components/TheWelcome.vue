@@ -21,19 +21,17 @@
       <div class="container-button md-layout-item">
           <md-button
             class="button-sample md-raised md-accent"
-            href="https://vuematerial.io/components/button"
+            :to="{ name: 'PostsList' }"
           >
             View Sample Story
           </md-button>
           <md-button
             class="button-sample md-raised md-accent"
-            href="https://vuematerial.io/components/button"
+            :to="{ name: 'PostsList' }"
           >
             View Sample Quote
           </md-button>
       </div>
-    </div>
-    <div class=footer>
     </div>
   </div>
 </template>
@@ -74,10 +72,5 @@ export default {
   margin: 5% 0% 10% 0%;
   width: 65%;
   font-size: 1.5em;
-}
-.footer {
-  background-color: #90a4ae;
-  width: 100%;
-  height: 1em;
 }
 </style>

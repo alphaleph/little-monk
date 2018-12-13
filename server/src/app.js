@@ -29,18 +29,6 @@ process.on('SIGINT', () => {
 
 const SERVER_PORT = 8081;
 
-/*
-TODO:
-- Implement more robust error handling and input checking
-  (e.g.
-    escaping for XSS
-    input validation - type, len, format, range
-    URL/HTML encoding, use sanitize-html)
-- Server-side rendering
-- Containerize microservices via Docker
-- Uglify JS
-*/
-
 /* Fetch all posts */
 app.get('/posts', (req, res) => {
   Post.find({}, (err, postsArr) => {

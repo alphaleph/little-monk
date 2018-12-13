@@ -13,22 +13,34 @@ export default new Router({
     {
       path: '/',
       name: 'Welcome',
-      component: TheWelcome
+      component: TheWelcome,
+      meta: {
+        title: 'Welcome - Little Monk'
+      }
     },
     {
       path: '/posts',
       name: 'PostsList',
-      component: ThePostsList
+      component: ThePostsList,
+      meta: {
+        title: 'Entries List - Little Monk'
+      }
     },
     {
       path: '/posts/new',
       name: 'NewPost',
-      component: TheNewPost
+      component: TheNewPost,
+      meta: {
+        title: 'Create An Entry - Little Monk'
+      }
     },
     {
       path: '/posts/:id',
       name: 'EditPost',
-      component: TheEditPost
+      component: TheEditPost,
+      meta: {
+        title: 'Edit An Entry - Little Monk'
+      }
     }
   ]
 })
