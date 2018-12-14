@@ -147,6 +147,9 @@ export default {
 table th, table tr {
   text-align: left;
 }
+table th {
+  font-size: 1em;
+}
 table tr td {
   padding: .1em;
 }
