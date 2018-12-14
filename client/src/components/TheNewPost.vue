@@ -1,31 +1,38 @@
 <template>
-  <div class="posts">
-    <h1>Add Post</h1>
-    <div class="form">
+  <div class="container-main">
+    <md-progress-bar class="md-primary" :md-value="100"></md-progress-bar>
+    <h1 class="md-display-1 title-create-post">
+      Add Post
+    </h1>
+    <div class="container-form">
+      <p class="md-caption caption-require">
+        (*) denotes required fields
+      </p>
       <div>
-        <input
-          type="text"
-          name="title"
-          placeholder="TITLE"
-          v-model="title"
-        >
+        <md-field :class="errorTitle">
+        <label>Enter Title</label>
+        <md-input :required="true" v-model="title" @input=toggleErrorTitle></md-input>
+        <span class="md-error">Title cannot be empty.</span>
+        </md-field>
       </div>
       <div>
-        <textarea
-          cols="30"
-          rows="10"
-          placeholder="DESCRIPTION"
-          v-model="description"
-        >
-        </textarea>
+        <md-field :class="errorContent">
+          <label>Enter Content</label>
+          <md-textarea :required="true" v-model="description" @input=toggleErrorDescription></md-textarea>
+          <span class="md-error">Content cannot be empty.</span>
+        </md-field>
       </div>
-      <div>
-        <button
-          class="app_post_btn"
+      <div class="container-buttons">
+        <md-button
+          class="md-primary md-raised"
+          :to="{ name: 'PostsList' }"
+          >Cancel</md-button>
+        <md-button
+          class="md-accent md-raised"
           @click="addPost"
         >
-          Add
-        </button>
+          Submit
+        </md-button>
       </div>
     </div>
   </div>
@@ -40,7 +47,21 @@ export default {
     return {
       title: '',
       description: '',
-      isSubmitted: false
+      isSubmitted: false,
+      titleError: false,
+      contentError: false
+    }
+  },
+  computed: {
+    errorTitle () {
+      return {
+        'md-invalid': this.titleError
+      }
+    },
+    errorContent () {
+      return {
+        'md-invalid': this.contentError
+      }
     }
   },
   beforeRouteLeave (to, from, next) {
@@ -65,35 +86,51 @@ export default {
         this.isSubmitted = true
         this.$router.push({ name: 'PostsList' })
       } else {
-        window.alert('Post title and content fields cannot be empty.')
+        if (this.title.trim().length === 0) {
+          this.titleError = true
+        }
+        if (this.description.trim().length === 0) {
+          this.contentError = true
+        }
       }
+    },
+    toggleErrorTitle () {
+      this.titleError = false
+    },
+    toggleErrorDescription () {
+      this.contentError = false
     }
   }
 }
 </script>
 
 <style scoped>
-.form input, .form textarea {
-  width: 500px;
-  padding: 10px;
-  border: 1px solid #e0dede;
-  outline: none;
-  font-size: 12px;
+.container-main {
+  height: 100%;
+  position: relative;
+  z-index: 1;
+  text-align: center;
 }
-
-.form div {
-  margin: 20px;
-}
-
-.app_post_btn {
-  background: #4d7ef7;
-  color: #fff;
-  padding: 10px 80px;
-  text-transform: uppercase;
-  font-size: 12px;
+.title-create-post {
   font-weight: bold;
-  width: 520px;
-  border: none;
-  cursor: pointer;
+  color: black;
+  margin: 2em;
+}
+.container-form {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 60%;
+  text-align: left;
+}
+.caption-require {
+  text-align: right;
+}
+.container-buttons {
+  text-align: right;
+}
+.container-buttons .md-button {
+  margin: .5em;
+  margin-left: 2em;
 }
 </style>

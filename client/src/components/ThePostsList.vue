@@ -2,7 +2,7 @@
   <div class="container-main">
     <div class="backdrop"></div>
     <md-progress-bar class="md-primary" :md-value="100"></md-progress-bar>
-    <h1 class="md-display-1 postslist-title">Posts</h1>
+    <h1 class="md-display-1 title-postslist">Posts</h1>
     <div class="container-button">
       <md-button
         class="md-accent md-raised button-create"
@@ -118,13 +118,15 @@ export default {
   box-shadow: 0px 0px 8px 0px #b3b3b3;
 }
 
-.postslist-title {
+.title-postslist {
   text-align: center;
   background-color: #cfd8dc;
   border-bottom: .1em solid #9ea7aa;
   padding: 2% 0% 2% 0%;
   margin-top: 0%;
   margin-bottom: 0%;
+  font-weight: bold;
+  color: black;
 }
 .container-table {
   width: 60%;
@@ -139,50 +141,19 @@ export default {
 .button-create {
   margin: 2em;
 }
-
 .container-empty-state {
   max-height: 60%;
 }
-
 table th, table tr {
   text-align: left;
-
 }
-
 table tr td {
   padding: .1em;
 }
-
 table tr:nth-child(odd) {
   background: #f2f2f2;
 }
 table tr:nth-child(1) {
   background: #c62828;
-}
-a {
-  color: #4d7ef7;
-  text-decoration: none;
-}
-a.add_post_link {
-  background: #4d7ef7;
-  color: #fff;
-  padding: 10px 80px;
-  text-transform: uppercase;
-  font-size: 12px;
-  font-weight: bold;
-}
-.btn_delete {
-  background: #ff8080;
-  color: #fff;
-  padding: .5em 1em;
-  margin: .1em;
-  font-size: 100%;
-  font-weight: bold;
-  cursor: pointer;
-  border: none;
-  border-radius: 7%;
-}
-.btn_delete:hover {
-  background: #ffb3b3;
 }
 </style>
