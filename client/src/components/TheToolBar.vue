@@ -53,5 +53,4 @@ export default {
 .toolbar-last-item {
   margin-right: 2em;
 }
-
 </style>
