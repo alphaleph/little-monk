@@ -26,7 +26,9 @@
         <md-button
           class="md-primary md-raised"
           :to="{ name: 'PostsList' }"
-          >Cancel</md-button>
+          >
+          Cancel
+        </md-button>
         <md-button
           class="md-accent md-raised"
           @click="addPost"

@@ -93,7 +93,7 @@ export default {
       }
     },
     infoStub: function (postInfo) {
-      return (postInfo.length < 25) ? postInfo : postInfo.slice(0, 25) + '...'
+      return (postInfo.length < 25) ? postInfo : postInfo.slice(0, 24) + '...'
     }
   }
 }
