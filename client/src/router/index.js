@@ -23,7 +23,7 @@ export default new Router({
       name: 'PostsList',
       component: ThePostsList,
       meta: {
-        title: 'Entries List - Little Monk'
+        title: 'Posts List - Little Monk'
       }
     },
     {
@@ -31,7 +31,7 @@ export default new Router({
       name: 'NewPost',
       component: TheNewPost,
       meta: {
-        title: 'Create An Entry - Little Monk'
+        title: 'Create A Post - Little Monk'
       }
     },
     {
@@ -39,7 +39,7 @@ export default new Router({
       name: 'EditPost',
       component: TheEditPost,
       meta: {
-        title: 'Edit An Entry - Little Monk'
+        title: 'Edit A Post - Little Monk'
       }
     }
   ]
