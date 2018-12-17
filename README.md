@@ -28,6 +28,7 @@ npm start
 ```
 # TODO:
 ## Client:
+- [ ] Optimize communication between client and server (e.g. via caching)
 - [ ] Implement connect-history-api-fallback and 404/catchall handling
 - [ ] Security: clean up client before sending private info, hash key with once-off nonce, send via HTTPS, irreversibly hash with another unique salt before storing
 
@@ -48,7 +49,7 @@ npm start
 - [x] CRUD functionality for entries
 - [x] Create more robust UI wireframes
 - [x] Create logo icon
-- [ ] Update UI
+- [x] Update UI
 - [ ] Feature: Account management
 - [ ] Feature: Discussion view
 - [ ] Feature: Emoji reactions
